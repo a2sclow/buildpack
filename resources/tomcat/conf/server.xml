@@ -19,7 +19,7 @@
 <Server port='-1'>
 
     <Service name='Catalina'>
-        <Connector port='${http.port}' bindOnInit='false' connectionTimeout='20000'/>
+        <Connector port='${http.port}' bindOnInit='false' connectionTimeout='200000'/>
 
         <Engine defaultHost='localhost' name='Catalina'>
             <Valve className='org.apache.catalina.valves.RemoteIpValve' protocolHeader='x-forwarded-proto'/>
@@ -29,7 +29,8 @@
             <Host name='localhost'
                   failCtxIfServletStartFails='true'>
                 <Listener className='org.cloudfoundry.tomcat.lifecycle.ApplicationStartupFailureDetectingLifecycleListener'/>
-                <Valve className='org.apache.catalina.valves.ErrorReportValve' showReport='false' showServerInfo='false'/>
+             <!--   <Valve className='org.apache.catalina.valves.ErrorReportValve' showReport='false' showServerInfo='false'/> -->
+                <Valve className='org.apache.catalina.valves.ErrorReportValve' showReport='true' showServerInfo='true'/>
             </Host>
         </Engine>
     </Service>
